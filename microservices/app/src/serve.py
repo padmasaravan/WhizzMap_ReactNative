@@ -15,6 +15,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return "welcome"
+
 @app.route('/geocoding' , methods=['POST','GET'])
 def geocode():
     if  request.method ==  'POST' or request.method == 'GET':
