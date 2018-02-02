@@ -27,8 +27,7 @@ def geocode():
         geocode = geocode1.json()
         sorted(geocode.keys())
         print(geocode)
-        s = json.dumps(geocode)
-        return s['query']
+        return json.dumps(geocode)
     return "bad request"
 
 @app.route('/directions' , methods=['POST','GET'])
