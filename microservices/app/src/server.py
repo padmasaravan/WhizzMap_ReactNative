@@ -20,7 +20,7 @@ def home():
 def geocode():
     if  request.method ==  'POST' or request.method == 'GET':
         place=request.form['place']
-        MAPBOX_ACCESS_TOKEN='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA'
+        MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
         geocoder = Geocoder()
         geocoder.session.params['access_token'] == MAPBOX_ACCESS_TOKEN
         geocode1 = geocoder.forward(place)
