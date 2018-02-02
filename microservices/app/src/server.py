@@ -20,8 +20,9 @@ def home():
 def geocode():
     if  request.method ==  'POST' or request.method == 'GET':
         place=request.form['place']
+        MAPBOX_ACCESS_TOKEN='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA'
         geocoder = Geocoder()
-        geocoder.session.params['access_token'] == os.environ['MAPBOX_ACCESS_TOKEN']
+        geocoder.session.params['access_token'] == MAPBOX_ACCESS_TOKEN
         geocode1 = geocoder.forward(place)
         geocode = geocode1.json()
         sorted(geocode.keys())
