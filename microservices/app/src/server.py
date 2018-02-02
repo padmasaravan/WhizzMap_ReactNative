@@ -26,7 +26,7 @@ def geocode():
         geocode = geocode1.json()
         sorted(geocode.keys())
         #print(geocode)
-        return json.dumps(geocode)
+        #return json.dumps(geocode)
     return "bad request"
 
 @app.route('/directions' , methods=['POST','GET'])
@@ -64,7 +64,7 @@ def directionRoute():
                 duration_json=response.json()
                 directionResponse_json=responses.json()
                 #print(directionResponse_json)
-                return json.dumps(directionResponse_json)
+                #return json.dumps(directionResponse_json)
         return "works bad"
 
 
