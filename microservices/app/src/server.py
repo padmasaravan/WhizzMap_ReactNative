@@ -27,7 +27,8 @@ def geocode():
         geocode = geocode1.json()
         sorted(geocode.keys())
         print(geocode)
-        return json.dumps(geocode)
+        s = json.dumps(geocode)
+        return s['query']
     return "bad request"
 
 @app.route('/directions' , methods=['POST','GET'])
@@ -39,7 +40,6 @@ def directionRoute():
                 pro=request.form['pro']
                 Profile='mapbox/'+pro
                 PRofile='mapbox.'+pro
-                perm_geocoder = Geocoder(name='mapbox.places-permanent')
                 geocoder = Geocoder()
                 geocoder.session.params['access_token'] == MAPBOX_ACCESS_TOKEN
                 geocode1 = geocoder.forward(src)
