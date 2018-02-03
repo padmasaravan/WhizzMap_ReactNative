@@ -24,6 +24,7 @@ def geocode():
         geocoder = Geocoder()
         geocoder.session.params['access_token'] =='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
         geocode1 = geocoder.forward("200 queen street")
+        print(response.status_code)
         geocode = geocode1.json()
         sorted(geocode.keys())
         print(geocode)
@@ -33,20 +34,19 @@ def geocode():
 @app.route('/directions' , methods=['POST','GET'])
 def directionRoute():
         if  request.method ==  'POST' or request.method == 'GET':
-                MAPBOX_ACCESS_TOKEN='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA'
                 src=request.form['src']
                 dest=request.form['dest']
                 pro=request.form['pro']
                 Profile='mapbox/'+pro
                 PRofile='mapbox.'+pro
                 geocoder = Geocoder()
-                geocoder.session.params['access_token'] == MAPBOX_ACCESS_TOKEN
+                geocoder.session.params['access_token'] == 'sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA'
                 geocode1 = geocoder.forward(src)
                 src_geocode = geocode1.json()
                 geocode2 = geocoder.forward(dest)
                 dest_geocode = geocode2.json()
-                src_latlng= src_geocode['features'][0]['geometry']['coordinates']
-                dest_latlng= dest_geocode['features'][0]['geometry']['coordinates']
+                src_latlng= src_geocode['feature'][0]['geometry']['coordinates']
+                dest_latlng= dest_geocode['feature'][0]['geometry']['coordinates']
                 origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 origin['properties']['name']=src
                 origin['geometry']['coordinates'] = src_latlng
