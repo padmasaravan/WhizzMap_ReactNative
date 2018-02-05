@@ -54,9 +54,9 @@ def directionRoute():
                 destination = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 destination['properties']['name']=dest
                 destination['geometry']['coordinates']=dest_latlng
-                service = DirectionsMatrix()
+                service = DirectionsMatrix(access_token='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA')
                 response = service.matrix([origin, destination],profile=Profile)
-                services = Directions()
+                services = Directions(access_token=MAPBOX_ACCESS_TOKEN)
                 responses = services.directions([origin, destination],PRofile)
                 directionMatrixStatus=response.status_code
                 directionMatrixType=response.headers['Content-Type']
