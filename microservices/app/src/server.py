@@ -21,8 +21,8 @@ def geocode():
     if  request.method ==  'POST' or request.method == 'GET':
         place=request.form['place']
         MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
-        geocoder = Geocoder()
-        geocoder.session.params['access_token'] =='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
+        geocoder = Geocoder(access_token=MAPBOX_ACCESS_TOKEN)
+        #geocoder.session.params['access_token'] =='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
         geocode1 = geocoder.forward("200 queen street")
         print(geocode1.status_code)
         geocode = geocode1.json()
