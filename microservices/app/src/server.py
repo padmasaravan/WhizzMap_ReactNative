@@ -37,6 +37,7 @@ def directionRoute():
                 src=request.form['src']
                 dest=request.form['dest']
                 pro=request.form['pro']
+                return src
                 Profile='mapbox/'+pro
                 PRofile='mapbox.'+pro
                 MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
@@ -48,7 +49,7 @@ def directionRoute():
                 dest_geocode = geocode2.json()
                 src_latlng= src_geocode['feature'][0]['geometry']['coordinates']
                 dest_latlng= dest_geocode['feature'][0]['geometry']['coordinates']
-                return json.dumps(src_geocode)
+                return src
                 '''origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 origin['properties']['name']=src
                 origin['geometry']['coordinates'] = src_latlng
