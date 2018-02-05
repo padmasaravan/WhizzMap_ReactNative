@@ -52,12 +52,14 @@ def directionRoute():
                 print(src_latlng)
                 print(dest_latlng)
                 return "hii"
-                origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
+                '''origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 origin['properties']['name']=src
                 origin['geometry']['coordinates'] = src_latlng
                 destination = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 destination['properties']['name']=dest
                 destination['geometry']['coordinates']=dest_latlng
+                print(origin)
+                print(destination)
                 service = DirectionsMatrix(access_token='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA')
                 response = service.matrix([origin, destination],profile=Profile)
                 services = Directions(access_token=MAPBOX_ACCESS_TOKEN)
@@ -67,9 +69,9 @@ def directionRoute():
                 directions_status=responses.status_code
                 directions_type=responses.headers['Content-Type']
                 duration_json=response.json()
-directionRes    response_json=responses.json()
+                directionResponse_json=responses.json()
                 print(directionResponse_json)
-                return json.dumps(directionResponse_json)
+                return json.dumps(directionResponse_json)'''
         return "works bad"
 
 
