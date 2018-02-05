@@ -47,9 +47,9 @@ def directionRoute():
                 src1_geocode = json.dumps(src_geocode)
                 #geocode2 = geocoder.forward(dest)
                 #dest_geocode = geocode2.json()
-                #src_latlng = src1_geocode["features"]
+                src_latlng = src1_geocode["type"]
                 #dest_latlng= dest_geocode['features'][0]['geometry']['coordinates']
-                print(src1_geocode)
+                print(src_latlng)
                 return "hii"
                 '''origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 origin['properties']['name']=src
@@ -66,6 +66,7 @@ def directionRoute():
                 directions_status=responses.status_code
                 directions_type=responses.headers['Content-Type']
                 duration_json=response.json()
+
                 directionResponse_json=responses.json()
                 print(directionResponse_json)
                 return json.dumps(directionResponse_json)'''
