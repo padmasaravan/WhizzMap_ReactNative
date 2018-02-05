@@ -59,19 +59,15 @@ def directionRoute():
                 destination['geometry']['coordinates']=dest_latlng
                 print(origin)
                 print(destination)
-                return "hii"
-                '''service = DirectionsMatrix(access_token='sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA')
-                response = service.matrix([origin, destination],profile=Profile)
                 services = Directions(access_token=MAPBOX_ACCESS_TOKEN)
                 responses = services.directions([origin, destination],PRofile)
-                directionMatrixStatus=response.status_code
-                directionMatrixType=response.headers['Content-Type']
                 directions_status=responses.status_code
+                print(directions_status)
                 directions_type=responses.headers['Content-Type']
-                duration_json=response.json()
+                print(directions_type)
                 directionResponse_json=responses.json()
-                print(directionResponse_json)
-                return json.dumps(directionResponse_json)'''
+                #print(directionResponse_json)
+                return json.dumps(directionResponse_json)
         return "works bad"
 
 
