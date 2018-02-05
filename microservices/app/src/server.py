@@ -44,10 +44,10 @@ def directionRoute():
                 #geocoder.session.params['access_token'] == 'sk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamNjMjkzZ3MwbTc0MndvMndtM2Ewb3lxIn0.cm3yhsou3E8UD0pm1GPKlA'
                 geocode1 = geocoder.forward(src)
                 src_geocode = geocode1.json()
-                src1_geocode = json.loads(src_geocode)
+                src1_geocode = json.dumps(src_geocode)
                 #geocode2 = geocoder.forward(dest)
                 #dest_geocode = geocode2.json()
-                src_latlng = src1_geocode["features"]
+                #src_latlng = src1_geocode["features"]
                 #dest_latlng= dest_geocode['features'][0]['geometry']['coordinates']
                 print(src_latlng)
                 return "hii"
