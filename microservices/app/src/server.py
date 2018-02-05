@@ -37,7 +37,7 @@ def directionRoute():
                 src=request.form['src']
                 dest=request.form['dest']
                 pro=request.form['pro']
-                return src
+                return pro
                 Profile='mapbox/'+pro
                 PRofile='mapbox.'+pro
                 MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
