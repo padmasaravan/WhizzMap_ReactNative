@@ -34,9 +34,9 @@ def geocode():
 @app.route('/directions' , methods=['POST','GET'])
 def directionRoute():
         if  request.method ==  'POST' or request.method == 'GET':
-                src=request.form['src']
-                dest=request.form['dest']
-                pro=request.form['pro']
+                src=request.args.get["start" , '']
+                dest=request.args.get["end" , '']
+                pro=request.args.get["profile", '']
                 Profile='mapbox/'+pro
                 PRofile='mapbox.'+pro         
                 MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
