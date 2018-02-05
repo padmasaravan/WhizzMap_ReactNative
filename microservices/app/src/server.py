@@ -49,8 +49,8 @@ def directionRoute():
                 #dest_geocode = geocode2.json()
                 #src_latlng = src1_geocode["features"]
                 #dest_latlng= dest_geocode['features'][0]['geometry']['coordinates']
-                #print(src1_geocode["features"][0]["geometry"]["coordinates"])
-                return src1_geocode
+                print(src1_geocode)
+                return "hii"
                 '''origin = {'type': 'Feature','properties': {'name': 'dummy'},'geometry': {'type': 'Point','coordinates': [0,0]}}
                 origin['properties']['name']=src
                 origin['geometry']['coordinates'] = src_latlng
