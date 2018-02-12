@@ -169,5 +169,6 @@ app:
     upstreamServicePath: /
     upstreamServicePort: 80
     corsPolicy: allow_all
+    enableCORS: true
 
 # To see actual endpoints for these routes, use `$ hasura microserivce list`
