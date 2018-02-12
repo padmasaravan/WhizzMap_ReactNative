@@ -55,5 +55,4 @@ items:
     loadBalancer: {}
 kind: List
 metadata: {}
-corsPolicy: allow_all
-    enableCORS: true
+
