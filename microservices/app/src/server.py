@@ -19,7 +19,9 @@ def home():
 @app.route('/geocoding' , methods=['POST','GET'])
 def geocode():
     if  request.method ==  'POST' or request.method == 'GET':
-        place=request.form['place']
+        #place=request.form['place']
+        data = request.get_json()
+        place=data['place']
         MAPBOX_ACCESS_TOKEN='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
         geocoder = Geocoder(access_token=MAPBOX_ACCESS_TOKEN)
         #geocoder.session.params['access_token'] =='pk.eyJ1IjoidmluaXRoYS1zaHJlZSIsImEiOiJjamJ0ZW1yc24xMzB2Mnp1ZnVhazB6MnVzIn0.ynemM-bZ9mc4C9PuasnVow'
