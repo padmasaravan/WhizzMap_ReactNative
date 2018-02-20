@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-        return render_template("form.html")
+        return "Whizz Map"
 
 @app.route('/geocoding' , methods=['POST','GET'])
 def geocode():
