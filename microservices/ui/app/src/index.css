@@ -1,0 +1,257 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+/*spinner*/
+.spinnerdiv-visible{
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.spinner{
+  margin-top: 13em;
+  margin-left: 45%;
+}
+.div-hidden{
+  display: none;
+}
+/*Error Alert*/
+.erroralert-visible{
+  position: absolute;
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.801);
+}
+#erroralert{
+  width: 28%;
+  margin-left: 35%;
+  margin-top: 10em;
+}
+#errortitle{
+  margin-top: 5px;
+  margin-left: 10px;
+}
+#errortext{
+  padding-left: 30px;
+  padding-top: 10px;
+}
+#errorback-btn{
+  width: 25%;
+  margin-left: auto;
+  margin-right: 15px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: red;
+  font-weight: 600;
+  border: 1px solid red;
+}
+#errorback-btn:hover{
+  color:white;
+  background-color: red;
+}
+/* navbar starts */
+#navbar{
+  background-color: black;
+}
+.navbar{
+  display: flex;
+  font-weight: bold;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgb(100, 224, 255);
+}
+.navbar-brand{
+  color: rgb(247, 240, 241) !important;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+/* navbar ends */
+
+/* side navbar starts */
+#source-ul,
+#dest-ul{
+  width:95%;
+  margin-bottom: 0;
+}
+.hide-sug-ul{
+  visibility: hidden;
+}
+.show-sug-ul{
+  position: absolute;
+  padding-left: 0;
+  z-index: 100;
+  border: 1px solid #ced4da;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  list-style: none;
+  background-color: #fff;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+.show-sug-ul li{
+  font-size: 14px;
+  padding-left: 8px;
+  padding-top: 8px;
+  color: rgb(97, 176, 212);
+  height: 35px;
+  border-bottom: 1px solid #cccecf;
+}
+.show-sug-ul li:hover{
+  color:rgb(69, 231, 169);
+  cursor: pointer;
+}
+.show-sug-ul:last-child{
+  border-bottom: 0;
+}
+/* side navbar ends */
+
+/* map starts */
+div#sidenav-map.container-fluid{
+  padding: 0;
+}
+#map {
+  height: 630px;
+  width: 100%;
+}
+/* map ends */
+#form-instructions-div{
+  position: absolute ;
+  z-index: 10;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 8px;
+  border-radius: 2%;    
+  background-color: black;
+}
+.form-label{
+  padding-left: 10px;
+  font-weight: bold;
+  color:rgb(69, 231, 169);
+}
+#form-submit-btn{
+  font-weight: 700;
+  color:rgb(69, 231, 169);
+  border-color: rgb(69, 231, 169);
+  margin-bottom: 10px;
+}
+#form-submit-btn:hover{
+  color: white;
+  background-color:rgb(69, 231, 169);
+}
+#form-clear-btn{
+  font-weight: 700;
+  margin-bottom: 2px;
+  float: right;
+  padding-left: 23px;
+  padding-right: 23px;
+  color:rgb(247, 73, 73);
+  border-color: rgb(247, 73, 73);
+}
+#form-clear-btn:hover{
+  color: white;
+  background-color:rgb(247, 73, 73);
+}
+#instructions-div div.card-body{
+  padding: 0.8rem;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+div#instructions-div-inner{
+  overflow-y: scroll;
+  height: 220px;
+  padding:8px;
+  padding-right: 2px;
+  border:1px solid rgb(69, 193, 231);
+}
+div#instructions-div-inner > div{
+  margin-top: 2px;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgb(141, 250, 226);
+}
+div#instructions-div-inner div:last-child{
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+#duration-label{
+  padding-top: 5px;
+  padding-bottom: 8px;
+  color:rgb(69, 231, 169);
+}
+.instructions-hidden{
+  display: none !important;
+}
+.instructions-visible{
+  display: block;
+}
+#footer{
+  display: flex;
+  background-color: black;
+  color:white;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-top: 2px solid rgb(100, 224, 255);
+  text-align: center;
+  justify-content: center;
+}
+#devname{
+  animation: name-color ease 10s infinite;
+  padding-left: 5px;
+}
+#footer p{
+  margin: 8px 0 8px 0;
+}
+#footer a{
+  text-decoration: none;
+  color:rgb(69, 231, 169);
+  padding-left: 4px;
+  padding-right: 4px;
+}
+@keyframes name-color{
+  0%{
+    color: rgb(247, 56, 56);
+  }
+  25%{
+    color:  rgb(255, 172, 64);
+  }
+  50%{
+    color: rgb(247, 56, 56);
+  }
+  75%{
+    color:  rgb(252, 176, 76);
+  }
+  100%{
+    color: rgb(247, 56, 56);
+  }
+}
+@media(max-width:800px){
+  #erroralert{
+    width:40%;
+    margin-left: 25%;
+  }
+}
+@media(max-width:550px){
+  div.mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+    display: none;
+  }
+  #erroralert{
+    width:70%;
+    margin-left: 15%;
+  }
+}
+@media(max-width:390px){
+  #form-clear-btn{
+    float: none;
+  }
+  .spinner{
+    margin-left: 35%;
+  }
+  #erroralert{
+    width:84%;
+    margin-left: 8%;
+  }
+}
