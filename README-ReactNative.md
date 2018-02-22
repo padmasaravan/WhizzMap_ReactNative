@@ -194,32 +194,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
   
 <img src='readme-reactnative-assets/WhizzMap_3.png' width='500' >
 
-## How to include a database?
 
-- Hasura provides instant data APIs over Postgres to make powerful data queries. 
-- The Hasura API Console is a UI which makes managing the backend easier. To access your api-console, run
-
-```
-$ hasura api-console
-```
-
-- You can build queries easily using the query builder on API-Console.
-
-![QueryBuilder](https://media.giphy.com/media/3oFzmaJy6xGNehrGUg/giphy.gif)
-
-- Also, there are ready made code snippets generated for the query that you build with the query builder. You can instantly copy and paste them in your code.
-
-![CodeGen](https://media.giphy.com/media/3o7524EoojncABE5Ve/giphy.gif)
-
-## How to add authentication?
-
-- Every app almost always requires some form of authentication. Hasura gives you a flexibility to implement almost every popular login mechanism (mobile, email, facebook, google etc) in your app.
-
-- You can try out all the APIs in the API console. Check out.
-
-```
-$ hasura api-console
-```
 ## Managing app dependencies:
 
 - ```npm/yarn``` dependencies  can be managed by editing ```package.json```.
