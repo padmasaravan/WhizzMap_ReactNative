@@ -21,7 +21,7 @@ WhizzMap is a simple Mapbox based app that was developed as part of Hasura Produ
 
 ## Mobile version of the App (React Native) :
 
-- This app is the Mobile version of the WhizzMap and created with React Native  using native code (```react-native init```)
+- The Mobile version of the WhizzMap is built with React Native  using native code (```react-native init```)
 - Integrates with **Mapbox Maps SDK for React Native  (```react-native-mapbox-gl```)**. 
 - A **Python-flask** server is also bundled with this app and  handles the app’s requests for API endpoints
 - Source code for the react-native app is in the **```react-native```** folder of the git repo
