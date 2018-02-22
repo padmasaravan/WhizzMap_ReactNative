@@ -39,7 +39,7 @@ Demo of the WhizzMap - Mobile App
 
 ## How to get it running?
 
-If you are planning to test the app and also need a backend server without setting it up locally, continue with the instructions in the **Quick-start** section.
+If you are planning to test the app and also need a backend server running on Hasura cluster, continue with the instructions in the **Quick-start** section.
 A detailed step by step instructions to setup the whole environment needed to edit and run the app locally can be found in the **Making changes and testing it  Locally** section.
 
 ## Quick-start :
@@ -75,7 +75,7 @@ The React Native app was created using **Native code** method (```react-native i
 - Choose the Development OS-  Windows  & Target OS - Android, the corresponding details will be displayed on the page. As of now, this WhizzMap Mobile app runs on Android only
 - Open the GitBash.
 
-##### Setup the server in Hasura cluster -- Getting the Hasura project
+##### Setup the Backend server in Hasura cluster -- Getting the Hasura project
 ```bash
     $ hasura quickstart sathya/whizzmap
 	$ cd whizzmap
@@ -92,13 +92,13 @@ After the git push completes:
 - Get the name of your cluster by running the command ```hasura cluster status```
 - Open the flask app url in browser https://app.<cluster name>.hasura-app.io/ so that python flask microservice is started. If you get a message stating that the cluster is waking, wait for a minute or two and try accessing it again. Once the page is displayed properly, everything is working as expected - the microservice is started and ready to accept your API endpoint requests.
 
-##### Setup the server locally
+##### Setup the Backend server locally
 
 - Press the **Clone or download**  button in the git repositry, to download the repo to your local directory
 - Start the flask server, so that it could listen and respond to local requests
 
 - Change the directory to the ```react-native``` folder of the WhizzMap Project 
-- Run the command ```npm instal```l to install the dependencies listed in the ```package.json``` file
+- Run the command ```npm install``` to install the dependencies listed in the ```package.json``` file
 
 ##### Changes to utils.js file
 
@@ -209,7 +209,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
 ## How to use a custom API/server?
 
 - Sometimes you might need to add new microservices/APIs as per your requirements. In such cases, you can deploy your microservices with Hasura using git push or docker.
-- This quickstart comes with one such custom microservice written in Python using the flask framework. Check it out in action at `https://api.<cluster-name>.hasura-app.io`. Currently, it just returns a "WhizzMap" at that endpoint.
+- This quickstart comes with one such custom microservice written in Python using the flask framework. Check it out in action at `https://api.<cluster-name>.hasura-app.io`. Currently, it just returns a "WhizzMap" at that endpoint.Tt also handles the API requests at the /directions endpoint and returns the directions details back as response.
 - This microservice is in the microservices folder of the project directory. You can add your custom microservice there.
 - To generate your own custom microservice, run
 
