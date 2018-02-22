@@ -196,54 +196,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
 
 ## How to include a database?
 
-- Hasura provides instant data APIs over Postgres to make powerful data queries. For example, to select "id" and "title" of all rows from the article table, make this query to `https://data.<cluster-name>.hasura-app.io/v1/query/`
-
-```:json
-{
-    "type":"select",
-    "args":{
-        "table":"article",
-        "columns":[
-            "title",
-            "id"
-        ],
-        "where":{
-            "author_id":4
-        }
-    }
-}
-```
-
-- This app uses the above query and renders the list of articles as shown below.
-
-![List of articles](https://github.com/hasura/hello-react-native/raw/master/readme-assets/list.png)
-
-- You can also exploit relationships. In the pre-populated schema, the author table has a relationship to the article table. The app uses the following query to render the article page.
-```:json
-{
-    "type":"select",
-    "args":{
-        "table":"article",
-        "columns":[
-            "title",
-            "content"
-            "id",
-            {
-                "name": "author",
-                "columns":[
-                    "name",
-                    "id"
-                ]
-            }
-        ],
-        "where":{
-            "author_id":4
-        }
-    }
-}
-```
-![List of articles](https://github.com/hasura/hello-react-native/raw/master/readme-assets/article.png)
-
+- Hasura provides instant data APIs over Postgres to make powerful data queries. 
 - The Hasura API Console is a UI which makes managing the backend easier. To access your api-console, run
 
 ```
@@ -261,11 +214,8 @@ $ hasura api-console
 ## How to add authentication?
 
 - Every app almost always requires some form of authentication. Hasura gives you a flexibility to implement almost every popular login mechanism (mobile, email, facebook, google etc) in your app.
-- In this application, we are using just the normal username password login. You can implement whichever login you need. The auth screen looks like this.
 
-![List of articles](https://github.com/hasura/hello-react-native/raw/master/readme-assets/auth.png)
-
-- You can try out all the auth APIs in the API console. Check out.
+- You can try out all the APIs in the API console. Check out.
 
 ```
 $ hasura api-console
