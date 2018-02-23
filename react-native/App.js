@@ -33,7 +33,7 @@ export default class App extends Component {
   render(){
         return (
             <View style={{ flex: 1}}>
-                <Title titleText={'WHIZZ MAP'} />
+                <Title titleText={'Whizz Map'} />
                 <WhizzMap />
             </View>
         );

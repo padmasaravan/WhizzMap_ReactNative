@@ -25,11 +25,11 @@ WhizzMap is a simple Mapbox based app that was developed as part of Hasura Produ
 - Integrates with **Mapbox Maps SDK for React Native  (```react-native-mapbox-gl```)**. 
 - A **Python-flask** server is also bundled with this app and  handles the app’s requests for API endpoints
 - Source code for the react-native app is in the **```react-native```** folder of the git repo
-- The Google Drive link to the **.apk** file is  - **https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
+- The Google Drive link to the **.apk** file is  - ** https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
 
 Demo of the WhizzMap - Mobile App
 
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/vi3WBzV_kEA/0.jpg)](https://www.youtube.com/watch?v=vi3WBzV_kEA "WhizzMap - Mobile Version")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/au0cL47_inU/0.jpg)](https://youtu.be/au0cL47_inU "WhizzMap - Mobile Version Demo")
 
 ## Pre-requisites
 
@@ -194,7 +194,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
   
 <img src='readme-reactnative-assets/WhizzMap_3.png' width='500' >
 
-
+<img src='readme-reactnative-assets/WhizzMap_4.png' width='500' >
 ## Managing app dependencies:
 
 - ```npm/yarn``` dependencies  can be managed by editing ```package.json```.

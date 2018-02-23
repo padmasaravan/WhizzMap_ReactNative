@@ -40,8 +40,8 @@ const styles = {
     },
     textStyle: {
         fontSize: 20,
-        fontFamily: 'Times New Roman',
-        //color: '#A51302'
+        fontFamily: 'Arial',
+        fontWeight: '500',
         color: 'white'
        
     }

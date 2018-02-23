@@ -52,14 +52,42 @@ export default class WhizzMap extends Component {
     }
   
     async updateInputs(src, dest, pro){
+        console.log('Whizmmap '+src+' '+dest+' '+pro);
+
+        if(!src && !dest && !pro){ //Null value to clear all the state and route
+            // Change all the state values to default values
+            this.setState({
+                srcLatLng: {
+                    lat: Constants.INITIAL_SRC_LAT, lng: Constants.INITIAL_SRC_LNG
+            },
+            destLatLng: {
+                    lat: Constants.INITIAL_DEST_LAT, lng: Constants.INITIAL_DEST_LNG
+            },
+                isFirst: true,
+                src: null,
+                dest: null,
+                directions: null,
+                instructions: [],
+                isInstFetched: false,
+                distance: null,
+                duration: null,
+                loading: false,
+                profile: null,
+            });
+            
+            return; 
+        }
 
         const sLower = src.toLowerCase();
         const dLower = dest.toLowerCase();
         const tProfile = pro.toLowerCase();
+
         console.log('update locations : '+ sLower +' '+dLower+' '+tProfile);
+
         let srcCoord = null;
         let destCoord = null;
         let errLoc = null;
+       
         //set state loading - true
 
         this.setState( {
@@ -74,7 +102,7 @@ export default class WhizzMap extends Component {
         if (!srcCoord || !destCoord){ // Error in location
             
             if (!srcCoord){
-                errLoc = 'Source';
+                errLoc = 'Starting Place';
             }else{
                 errLoc = 'Destination';
             }
@@ -105,13 +133,16 @@ export default class WhizzMap extends Component {
             return;
         }
        
+        // Sending request to Backend API endpoint - directions
         const endPointUrl = 'https://app.'+Constants.clusterName+'.hasura-app.io/directions'
         console.log(endPointUrl);
  
+        // setting the Header
         const reqHeader = {
             'Content-Type': 'application/json'
         };
         
+        // Request - as json object
         const reqBody = {
          start: sLower,
          end: dLower,
@@ -128,16 +159,14 @@ export default class WhizzMap extends Component {
              console.log(e); // eslint-disable-line
          }
  
-         if (resBackEnd == null) { 
+         if (resBackEnd == null) { // No response 
              return;
          }
       
          const resData = resBackEnd.data;
-         const resDirc = resData.routes[0]; // directions
+                
 
-        
-
-         if (!resDirc) // No route found
+         if (!(resData.routes) ) // No route found
          {
             
                 Alert.alert('No Route Error','No route found for the given Inputs !!!');
@@ -167,24 +196,16 @@ export default class WhizzMap extends Component {
              return;
          }
         
-         srcCoord= resData.origin.geometry.coordinates; 
-         destCoord= resData.destination.geometry.coordinates; 
-         const resDist= resData.routes[0].distance; 
-         const resDurn= resData.routes[0].duration;
+         const resDirc = resData.routes[0]; // directions
+         srcCoord= resData.origin.geometry.coordinates; // source coordinates
+         destCoord= resData.destination.geometry.coordinates; //destinatiom coordinates
+         const resDist= resData.routes[0].distance;  // distance in metres
+         const resDurn= resData.routes[0].duration; // distance in seconds
          const resSteps= resData.routes[0].steps; // instructions
  
-         // Source and Destination coordinates
-                
-        if (!srcCoord && !destCoord){
-
-            srcCoord = {  'lat':Constants.INITIAL_SRC_LAT, 'lng': Constants.INITIAL_SRC_LNG };
-            destCoord = {  'lat':Constants.INITIAL_DEST_LAT, 'lng': Constants.INITIAL_DEST_LNG };
-
-        }else{
-            srcCoord = this.convertCoordinates(srcCoord);
-            destCoord = this.convertCoordinates(destCoord);
-        }
-
+        srcCoord = this.convertCoordinates(srcCoord); // Convert to process extract lat, long
+        destCoord = this.convertCoordinates(destCoord);
+       
          
          //Instructions to travel from source to destination
  
@@ -194,8 +215,8 @@ export default class WhizzMap extends Component {
          });
     
         // Convert Time  & Distance
-        const convDist = this.convertDist(resDist);
-        const convDurn = this.convertTime(resDurn);
+        const convDist = this.convertDist(resDist); // Distance metres - kms
+        const convDurn = this.convertTime(resDurn); // Duration secs - Day/Hour/Min
 
         // set state
 
@@ -220,7 +241,7 @@ export default class WhizzMap extends Component {
          
     }
 
-    async getCoordinates(name){
+    async getCoordinates(name){ //Helper method to check the locations are entered correctly
         
        
         const req = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+name+'.json?access_token='+Constants.mapboxAccessToken;
@@ -233,7 +254,7 @@ export default class WhizzMap extends Component {
          // axios.get
         try{
            res = await axios.get(req);
-           console.log( await res);
+           //console.log( await res);
         }catch (e) {
             console.log(e); // eslint-disable-line
         }
@@ -244,6 +265,8 @@ export default class WhizzMap extends Component {
         
         
         const place = res.data;
+
+        console.log(place);
         if (!place.features.length){
             console.log('features : '+place.features);
             return ;

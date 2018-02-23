@@ -25,11 +25,11 @@ WhizzMap is a simple Mapbox based app that was developed as part of Hasura Produ
 - Integrates with **Mapbox Maps SDK for React Native  (```react-native-mapbox-gl```)**. 
 - A **Python-flask** server is also bundled with this app and  handles the app’s requests for API endpoints
 - Source code for the react-native app is in the **```react-native```** folder of the git repo
-- The Google Drive link to the **.apk** file is  - **https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
+- The Google Drive link to the **.apk** file is  - ** https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
 
 Demo of the WhizzMap - Mobile App
 
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/vi3WBzV_kEA/0.jpg)](https://www.youtube.com/watch?v=vi3WBzV_kEA "WhizzMap - Mobile Version")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/au0cL47_inU/0.jpg)](https://youtu.be/au0cL47_inU "WhizzMap - Mobile Version Demo")
 
 ## Pre-requisites
 
@@ -78,17 +78,17 @@ The React Native app was created using **Native code** method (```react-native i
 ##### Setup the Backend server in Hasura cluster -- Getting the Hasura project
 ```bash
     $ hasura quickstart sathya/whizzmap
-	$ cd whizzmap
-	# Deploy
-	$ git add . && git commit -m "Deployment commit"
-	$ git push hasura master
+  $ cd whizzmap
+  # Deploy
+  $ git add . && git commit -m "Deployment commit"
+  $ git push hasura master
 ```
 After the git push completes:
 ```bash
     $ hasura microservice list
 ```
 - The ```hasura quickstart``` command clones the project repository to your local computer, and also creates a free Hasura cluster,   where the project will be hosted for free.
-- A git remote (called ```hasura```) is created and initialized with your project directory.	
+- A git remote (called ```hasura```) is created and initialized with your project directory.  
 - Get the name of your cluster by running the command ```hasura cluster status```
 - Open the flask app url in browser https://app.<cluster name>.hasura-app.io/ so that python flask microservice is started. If you get a message stating that the cluster is waking, wait for a minute or two and try accessing it again. Once the page is displayed properly, everything is working as expected - the microservice is started and ready to accept your API endpoint requests.
 
@@ -98,7 +98,7 @@ After the git push completes:
 - Start the flask server, so that it could listen and respond to local requests
 
 - Change the directory to the ```react-native``` folder of the WhizzMap Project 
-- Run the command ```npm instal```l to install the dependencies listed in the ```package.json``` file
+- Run the command ```npm install``` to install the dependencies listed in the ```package.json``` file
 
 ##### Changes to utils.js file
 
@@ -130,7 +130,7 @@ react-native bundle --platform android --dev false --entry-file index.js --bundl
 
 - In the **Generate Signed APK** Dialog box,  click **Create new** button.
 
-	<img src='../readme-reactnative-assets/Generate_Signed_APK_2.png' width='450' >
+  <img src='../readme-reactnative-assets/Generate_Signed_APK_2.png' width='450' >
   
 - Fill all the information on ‘New Key Store’ dialog box. Click ‘OK’. Click ‘Next’. Click ‘Finish’
 -  In the next Dialog box , chose the destination folder for the APK file
@@ -159,28 +159,28 @@ This is triggered by two events,
 The response from the server is processed, if no routes are found, an alert box is displayed.
 
 ```javascript
-	const resData = resBackEnd.data;
-	const resDirc = resData.routes[0]; // directions
-	if (!resDirc){
-			Alert.alert('No Route Error','No route found for the given inputs !!!');
-           		return;
-	}
+  const resData = resBackEnd.data;
+  const resDirc = resData.routes[0]; // directions
+  if (!resDirc){
+      Alert.alert('No Route Error','No route found for the given inputs !!!');
+              return;
+  }
 ```
 On successful processing of the response, the Coordinates of the Source & Destination , the time taken for travel  (in secs) , Distance to be traveled  (in metres )and Turn by Turn instructions are extracted and displayed on screen.
 
 ```javascript
-			srcCoord= resData.origin.geometry.coordinates; 
-         	destCoord= resData.destination.geometry.coordinates; 
-         	const resDist= resData.routes[0].distance; 
-        	 const resDurn= resData.routes[0].duration;
-         	const resSteps= resData.routes[0].steps; // instructions
+      srcCoord= resData.origin.geometry.coordinates; 
+          destCoord= resData.destination.geometry.coordinates; 
+          const resDist= resData.routes[0].distance; 
+           const resDurn= resData.routes[0].duration;
+          const resSteps= resData.routes[0].steps; // instructions
          
-        	 //Instructions to travel from source to destination
+           //Instructions to travel from source to destination
  
-         	let instructions = [];
-         	resSteps.forEach(step => {
-            	 	instructions.push(step.maneuver.instruction);
-        	 });
+          let instructions = [];
+          resSteps.forEach(step => {
+                instructions.push(step.maneuver.instruction);
+           });
 ```
 - The Source and Destination are added to the map as ```Point Annotation```
 - The route between the places is displayed on the map using ```ShapeSource``` component.
@@ -194,7 +194,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
   
 <img src='../readme-reactnative-assets/WhizzMap_3.png' width='500' >
 
-
+<img src='../readme-reactnative-assets/WhizzMap_4.png' width='500' >
 ## Managing app dependencies:
 
 - ```npm/yarn``` dependencies  can be managed by editing ```package.json```.
@@ -209,7 +209,7 @@ On successful processing of the response, the Coordinates of the Source & Destin
 ## How to use a custom API/server?
 
 - Sometimes you might need to add new microservices/APIs as per your requirements. In such cases, you can deploy your microservices with Hasura using git push or docker.
-- This quickstart comes with one such custom microservice written in Python using the flask framework. Check it out in action at `https://api.<cluster-name>.hasura-app.io`. Currently, it just returns a "WhizzMap" at that endpoint.It also handles the API requests at the /directions endpoint and returns the directions details back as response.
+- This quickstart comes with one such custom microservice written in Python using the flask framework. Check it out in action at `https://api.<cluster-name>.hasura-app.io`. Currently, it just returns a "WhizzMap" at that endpoint.Tt also handles the API requests at the /directions endpoint and returns the directions details back as response.
 - This microservice is in the microservices folder of the project directory. You can add your custom microservice there.
 - To generate your own custom microservice, run
 

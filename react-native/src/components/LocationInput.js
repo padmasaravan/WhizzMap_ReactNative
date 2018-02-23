@@ -1,3 +1,5 @@
+// b4 adding Native base components
+
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet, Keyboard, TouchableOpacity  } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
@@ -20,52 +22,88 @@ let profile = 'driving';
 class LocationInput extends Component{
     constructor(props){
         super(props);
-
+        this.state = {
+            
+            source: null,
+            destination: null,
+            profile: null
+        }
         this.updateInputs = this.updateInputs.bind(this);
+        this.clearInputs = this.clearInputs.bind(this);
         
     }
     
-    updateInputs(){
-         
-        source = this.refs.sText._lastNativeText;
-        destination = this.refs.dText._lastNativeText;
+    updateInputs(){ //Update the state & route
+     
+        profile = this.refs.proDDown.value();
+        source = this.state.source;
+        destination = this.state.destination;
+        
+        console.log('loc  '+source+'  '+destination);
+        if (!source || !destination) // Source or Destination field is null
+        {
+            return;
+        }
         if (source && destination){
             Keyboard.dismiss();
-  
-            profile = this.refs.proDDown.value();
-            console.log('Location : profile '+profile);
-            
+            this.setState({ profile: profile})
             
             this.props.updateInputs(source, destination, profile);
         }   
      }
 
+     clearInputs(){ // Clear Input & Routes
+
+        Keyboard.dismiss();
+
+        this.refs.sText.clear();
+        this.refs.dText.clear();
+        profile = null;
+        source = null;
+        destination = null;
+        this.setState({
+            source: source,
+            destination: destination,
+            profile: profile
+        });
+        
+        this.props.updateInputs(source, destination,profile);
+     }
+
      
     render(){
-        const { textLabel, textboxStyle, buttonStyle, dDownButtonContainerStyle, dDownStyle,buttonTxt} = styles;
-        
-        Keyboard.dismiss();
+        const { textLabel, textboxStyle, buttonStyle, 
+                    dDownButtonContainerStyle, dDownStyle,buttonTxt,
+                    clrButtonStyle,clrButtonTxt,
+                } = styles; // Deconstruction
+                
         return(
             <Card>
                 <CardSection >
-                    <Text style={textLabel}>Source</Text>
+                    <Text style={textLabel}>From</Text>
                     <TextInput 
                         ref="sText"
                         style= {textboxStyle}
-                        placeholderTextColor = "black"
+                        placeholder='Starting Place'
+                        placeholderTextColor = "#939393"
                         autoCapitalize = "none"
                         underlineColorAndroid = 'transparent'
+                        onChangeText={text => this.setState({source: text})}
+                        value={this.state.source}
                         />
                     
                 </CardSection>
                 <CardSection>
-                    <Text style={textLabel}>Destination</Text>
+                    <Text style={textLabel}>To</Text>
                     <TextInput 
                         ref="dText"
                         style= {textboxStyle}
-                        placeholderTextColor = "black"
+                        placeholder='Destination Place'
+                        placeholderTextColor = "#939393"
                         autoCapitalize = "none"
                         underlineColorAndroid = 'transparent'
+                        onChangeText={text => this.setState({destination: text})}
+                        value={this.state.destination}
                         />
                     
                     
@@ -75,18 +113,26 @@ class LocationInput extends Component{
                         <Dropdown 
                             ref="proDDown"
                             data={pData}
-                            label='Mode'
+                            label='Select'
                             value= 'Driving'
-                            textColor="#6F0117"
+                            textColor='white'
+                            itemColor='black'
                             labelHeight= {20}
                             labelFontSize= {16}
                             dropdownPosition= {1}
+                            selectedItemColor='black'
+                            transparent={false}
                             onChangeText={this.updateInputs}
+                            baseColor="#27F3BB"
+                            
                             />
                     </View>
-                    <View>
+                    <View  style={{flexDirection: 'row'}}>
                             <TouchableOpacity onPress={this.updateInputs} style={buttonStyle}>
-                                <Text style={buttonTxt}>Show Route</Text>
+                                <Text style={buttonTxt}>Let's Go</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={this.clearInputs} style={clrButtonStyle}>
+                                <Text style={clrButtonTxt}>Clear</Text>
                             </TouchableOpacity>
                     </View>
                 </View>
@@ -101,38 +147,77 @@ const styles = StyleSheet.create({
     textLabel: {
         fontSize: 16,
         fontFamily: 'Times New Roman',
-        color: '#6F0117'
+        color: '#27F3BB',
+        fontWeight: '500',
+        width: 100,
+        textAlign: 'left',
         
     },
     textboxStyle: {
         width: 200,
-        height: 40,
+        height: 37,
         marginLeft : 15,
         fontSize: 16,
         fontFamily: 'Times New Roman',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        paddingLeft: 15,
         
     },
     buttonStyle: {
         borderWidth: 1,
-        backgroundColor: '#fff',
-        borderColor: 'black',
-        width :200,
-        height: 30
+        backgroundColor: 'black',
+        borderColor: '#27F3BB',
+        width :100,
+        height: 30,
+       
     },
     buttonTxt: {
         fontSize: 16,
         fontFamily: 'Times New Roman',
         textAlign: 'center',
-        color: '#6F0117',
+        color: '#27F3BB',
+        fontWeight: '500',
+    },
+    clrButtonStyle: {
+        borderWidth: 1,
+        backgroundColor: 'black',
+        borderColor: '#FA2E0E',
+        width :100,
+        height: 30
+    },
+    clrButtonTxt: {
+        fontSize: 16,
+        fontFamily: 'Times New Roman',
+        textAlign: 'center',
+        color: '#FA2E0E',
+        fontWeight: '500',
     },
     dDownButtonContainerStyle: {
-        margin: 5,
+        margin: 1,
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        //justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#E4F5FC',
+        backgroundColor: 'black',
     },
     dDownStyle: {
-        flex : 1,
+        flex: 1
         }
- })
+ });
+
+
+ /*
+
+  <TouchableOpacity onPress={()=>{
+                                            this.setState({
+                                                source: null,
+                                                destination: null,
+                                                profile: null
+                                            })
+                                            this.clearInputs()
+                                }} style={clrButtonStyle}>
+                                <Text style={clrButtonTxt}>Clear</Text>
+                            </TouchableOpacity>
+
+*/
+

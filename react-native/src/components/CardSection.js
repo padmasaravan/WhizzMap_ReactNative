@@ -15,10 +15,11 @@ const styles = {
         padding: 5,
         flexDirection: 'row',
         justifyContent: 'center',
+        alignItems: 'center',
         borderColor: '#ddd',
-        backgroundColor: '#E4F5FC',
-        position: 'relative',
-        height : 40
+        backgroundColor: 'black',
+        //position: 'relative',
+        height : 45
     }
 };
 
