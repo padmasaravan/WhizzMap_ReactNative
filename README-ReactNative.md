@@ -25,7 +25,7 @@ WhizzMap is a simple Mapbox based app that was developed as part of Hasura Produ
 - Integrates with **Mapbox Maps SDK for React Native  (```react-native-mapbox-gl```)**. 
 - A **Python-flask** server is also bundled with this app and  handles the app’s requests for API endpoints
 - Source code for the react-native app is in the **```react-native```** folder of the git repo
-- The Google Drive link to the **.apk** file is  - ** https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
+- The Google Drive link to the **.apk** file is  - **https://drive.google.com/open?id=1NjZdkVLHAhH9K7RKXCO0xpHFsJ1_UqLQ**
 
 Demo of the WhizzMap - Mobile App
 
@@ -135,8 +135,7 @@ react-native bundle --platform android --dev false --entry-file index.js --bundl
 - Fill all the information on ‘New Key Store’ dialog box. Click ‘OK’. Click ‘Next’. Click ‘Finish’
 -  In the next Dialog box , chose the destination folder for the APK file
 - Chose Build Type as – **release**
-- Signature Versions : **V1** . 
-- V2 is for Android 7.0 and above.
+- Signature Versions : **V1** and **V2** 
 - Generated .apk file will be generated and stored in the chosen path **(android\app\release)**
 
 <img src='readme-reactnative-assets/Generate_Signed_APK_3.png' width='450' >
@@ -144,8 +143,8 @@ react-native bundle --platform android --dev false --entry-file index.js --bundl
 ## Working of the App:
 Initially after the first render, the screen displayed on the device has the following components,
 - The screen has 2 TextInput components to enter the Source & Destination
-- The mode of Transportation can be selected from the  Dropdown (Mode) component (Driving /Cycling / Walking)
-- A Button component (Show Route) 
+- The mode of Transportation can be selected from the  Dropdown (Select) component (Driving /Cycling / Walking)
+- A Button component (Let's Go) and another Button component (Clear) to clear all the input fields
 - A Mapbox MapView Component which displays the map.
 
 <img src='readme-reactnative-assets/WhizzMap_1.png' width='500' >
@@ -153,15 +152,15 @@ Initially after the first render, the screen displayed on the device has the fol
 Once the source, destination and  Mode of transportation details are entered by the user, the request to API endpoint /directions is sent by the app.
 
 This is triggered by two events, 
-1. User presses the Show Route Button
-2. User changes the Mode (Driving /Cycling / Walking)
+1. User presses the **Let's Go** Button
+2. User changes the Select component (Driving /Cycling / Walking)
 
 The response from the server is processed, if no routes are found, an alert box is displayed.
 
 ```javascript
 	const resData = resBackEnd.data;
-	const resDirc = resData.routes[0]; // directions
-	if (!resDirc){
+	
+	if (!(resData.routes) ){ // No route found
 			Alert.alert('No Route Error','No route found for the given inputs !!!');
            		return;
 	}
@@ -169,10 +168,11 @@ The response from the server is processed, if no routes are found, an alert box 
 On successful processing of the response, the Coordinates of the Source & Destination , the time taken for travel  (in secs) , Distance to be traveled  (in metres )and Turn by Turn instructions are extracted and displayed on screen.
 
 ```javascript
-			srcCoord= resData.origin.geometry.coordinates; 
+		const resDirc = resData.routes[0]; // directions
+		srcCoord= resData.origin.geometry.coordinates; 
          	destCoord= resData.destination.geometry.coordinates; 
          	const resDist= resData.routes[0].distance; 
-        	 const resDurn= resData.routes[0].duration;
+        	const resDurn= resData.routes[0].duration;
          	const resSteps= resData.routes[0].steps; // instructions
          
         	 //Instructions to travel from source to destination
