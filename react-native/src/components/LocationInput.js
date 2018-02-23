@@ -205,19 +205,3 @@ const styles = StyleSheet.create({
         }
  });
 
-
- /*
-
-  <TouchableOpacity onPress={()=>{
-                                            this.setState({
-                                                source: null,
-                                                destination: null,
-                                                profile: null
-                                            })
-                                            this.clearInputs()
-                                }} style={clrButtonStyle}>
-                                <Text style={clrButtonTxt}>Clear</Text>
-                            </TouchableOpacity>
-
-*/
-
