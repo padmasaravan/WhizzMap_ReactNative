@@ -145,7 +145,7 @@ react-native bundle --platform android --dev false --entry-file index.js --bundl
 Initially after the first render, the screen displayed on the device has the following components,
 - The screen has 2 TextInput components to enter the Source & Destination
 - The mode of Transportation can be selected from the  Dropdown (Mode) component (Driving /Cycling / Walking)
-- A Button component (Show Route) 
+- A Button component (Let's Go) and another Button component (Clear) to clear all the input fields 
 - A Mapbox MapView Component which displays the map.
 
 <img src='../readme-reactnative-assets/WhizzMap_1.png' width='500' >
@@ -153,15 +153,15 @@ Initially after the first render, the screen displayed on the device has the fol
 Once the source, destination and  Mode of transportation details are entered by the user, the request to API endpoint /directions is sent by the app.
 
 This is triggered by two events, 
-1. User presses the Show Route Button
-2. User changes the Mode (Driving /Cycling / Walking)
+1. User presses the Let's Go Button
+2. User changes the Select component value (Driving /Cycling / Walking)
 
 The response from the server is processed, if no routes are found, an alert box is displayed.
 
 ```javascript
   const resData = resBackEnd.data;
-  const resDirc = resData.routes[0]; // directions
-  if (!resDirc){
+  
+  if (!(resData.routes) ) // No route found
       Alert.alert('No Route Error','No route found for the given inputs !!!');
               return;
   }
@@ -169,10 +169,11 @@ The response from the server is processed, if no routes are found, an alert box 
 On successful processing of the response, the Coordinates of the Source & Destination , the time taken for travel  (in secs) , Distance to be traveled  (in metres )and Turn by Turn instructions are extracted and displayed on screen.
 
 ```javascript
-      srcCoord= resData.origin.geometry.coordinates; 
+          const resDirc = resData.routes[0]; // directions
+          srcCoord= resData.origin.geometry.coordinates; 
           destCoord= resData.destination.geometry.coordinates; 
           const resDist= resData.routes[0].distance; 
-           const resDurn= resData.routes[0].duration;
+          const resDurn= resData.routes[0].duration;
           const resSteps= resData.routes[0].steps; // instructions
          
            //Instructions to travel from source to destination
