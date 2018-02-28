@@ -7,6 +7,6 @@ WhizzMap is a simple Mapbox based app that was developed as part of Hasura Produ
 - a ReactNative based mobile app
 - a Python Flask back-end API
 
-The source code for the Mobile version of the app is in the ***```react-native```*** of this repository. Instructions to Clone/ download and deployiing the app is in the [README-ReactNative.md](Whizzmap_ReactNative/README-ReactNative.md)
+The source code for the Mobile version of the app is in the ***```react-native```*** of this repository. Instructions to Clone/ download and deployiing the app is in the [README-ReactNative.md](https://github.com/padmasaravan/Whizzmap_ReactNative/blob/master/README-ReactNative.md)
 
 The full source with a ReactJS Frontend, ReactNative Mobile version and the Python Flask BAckend can be found in this [repositry](https://github.com/sathya9897/whizzmap)
